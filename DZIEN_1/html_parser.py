@@ -12,6 +12,8 @@ import re
 import json
 from html.parser import HTMLParser
 
+import requests
+
 
 print("__________ Regex ___________")
 html = """
@@ -59,3 +61,11 @@ data = '{"name":"Laptop","price":3510,"in_stock":true}'
 product = json.loads(data)
 print(f"nazwa: {product['name']}")
 print(f"cena: {product['price']}")
+
+#mini-scraper
+url = "https://python.org/"
+reponse = requests.get(url)
+
+#regex nagłówka H1
+title = re.search(r"<h1>(.*?)</h1>", reponse.text).group(1)
+print(f"nałgówek strony: {title}")

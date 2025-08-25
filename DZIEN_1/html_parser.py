@@ -63,6 +63,7 @@ print(f"nazwa: {product['name']}")
 print(f"cena: {product['price']}")
 
 #mini-scraper
+print("\n__________ mini scrapper ___________")
 url = "https://python.org/"
 reponse = requests.get(url)
 

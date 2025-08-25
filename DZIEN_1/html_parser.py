@@ -37,6 +37,17 @@ class MyHTMLParser(HTMLParser):
         print(f"Data: {data.strip()}")
 
 parser = MyHTMLParser()
-parser.feed(html) 
+parser.feed(html)
 
+print("\n__________ szybkie filtrowanie ___________")
+links = [
+    "https://quotes.toscrape.com/page/1/",
+    "https://quotes.toscrape.com/page/2/",
+    "https://quotes.toscrape.com/page/3/",
+    "https://quotes.toscrape.com/login",
+]
+
+#filtrujemy tylko linki do paginacji
+page_links = [link for link in links if "/page/" in link]
+print(page_links)
 

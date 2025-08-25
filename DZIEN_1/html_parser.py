@@ -9,7 +9,9 @@ czytanie formatu json
 """
 
 import re
+import json
 from html.parser import HTMLParser
+
 
 print("__________ Regex ___________")
 html = """
@@ -51,3 +53,9 @@ links = [
 page_links = [link for link in links if "/page/" in link]
 print(page_links)
 
+
+print("\n__________ JSON scrapping ___________")
+data = '{"name":"Laptop","price":3510,"in_stock":true}'
+product = json.loads(data)
+print(f"nazwa: {product['name']}")
+print(f"cena: {product['price']}")

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Sklep Demowy – Elektronika</title>
+  <base href="https://demo.example.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem","position": 1,"name": "Elektronika","item": "/k/elektronika"
+    },{
+      "@type": "ListItem","position": 2,"name": "Audio","item": "/k/elektronika/audio"
+    }]
+  }
+  </script>
+</head>
+<body>
+  <header>
+    <h1 id="page-title">Audio – słuchawki</h1>
+    <nav class="breadcrumbs">
+      <a href="/k/elektronika">Elektronika</a> ›
+      <a href="/k/elektronika/audio" aria-current="page">Audio</a>
+    </nav>
+  </header>
+
+  <section id="filters">
+    <form id="search">
+      <input type="search" name="q" value="ANC">
+      <label><input type="checkbox" name="promo" checked> Promocje</label>
+      <label><input type="checkbox" name="instock"> Tylko dostępne</label>
+    </form>
+  </section>
+
+  <main>
+    <ul class="product-list">
+      <li class="product card" data-sku="H100" data-cat="audio">
+        <figure>
+          <img class="thumb" data-src="/img/h100.webp" alt="H100 Black" width="200" height="200">
+          <figcaption>H100 Black</figcaption>
+        </figure>
+        <h2 class="name"><a href="/p/H100">Słuchawki H100</a></h2>
+        <div class="rating star-rating Four" aria-label="4/5"></div>
+        <p class="desc">Lekka konstrukcja, dobra jakość dźwięku.</p>
+        <div class="prices">
+          <span class="price">PLN 299.00</span>
+        </div>
+        <p class="availability">Dostępne (12)</p>
+        <ul class="variants">
+          <li data-variant="black" data-ean="111">Black</li>
+          <li data-variant="white" data-ean="112">White</li>
+        </ul>
+        <table class="specs">
+          <tr><th>Typ</th><td>Nauszne</td></tr>
+          <tr><th>ANC</th><td>Nie</td></tr>
+          <tr><th>BT</th><td>5.0</td></tr>
+        </table>
+      </li>
+
+      <li class="product card featured" data-sku="H200" data-cat="audio">
+        <figure>
+          <img class="thumb lazy" src="/img/placeholder.svg" data-src="/img/h200.webp" alt="H200 Pro">
+          <figcaption>H200 Pro</figcaption>
+        </figure>
+        <h2 class="name"><a href="/p/H200">Słuchawki H200 Pro</a></h2>
+        <div class="rating star-rating Five" aria-label="5/5"></div>
+        <p class="desc">Hi-Res, ANC, multipoint.</p>
+        <div class="prices">
+          <span class="price old">PLN 599.00</span>
+          <span class="price promo">PLN 499.00</span>
+        </div>
+        <p class="availability">Dostępne (3)</p>
+        <ul class="variants">
+          <li data-variant="pro-black" data-ean="221">Pro Black</li>
+        </ul>
+        <div class="badges"><span class="badge">Bestseller</span></div>
+      </li>
+
+      <li class="product card" data-sku="H300" data-cat="audio">
+        <h2 class="name"><a href="/p/H300">Słuchawki H300</a></h2>
+        <div class="rating star-rating Two" aria-label="2/5"></div>
+        <div class="prices">
+          <span class="price">PLN 149,50</span>
+        </div>
+        <p class="availability out">Chwilowo niedostępne</p>
+        <!-- opis w JSON w skrypcie -->
+        <script type="application/json" class="data">
+          {"short":"Budżetowy model dla mniej wymagających","img":"\/img\/h300.webp"}
+        </script>
+      </li>
+    </ul>
+
+    <nav class="pagination">
+      <a class="prev" href="/k/elektronika/audio?page=1">«</a>
+      <a class="current" href="/k/elektronika/audio?page=2">2</a>
+      <a class="next" href="/k/elektronika/audio?page=3">»</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p class="legal">© DemoShop</p>
+  </footer>
+</body>
+</html>
+

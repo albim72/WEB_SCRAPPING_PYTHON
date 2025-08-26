@@ -69,3 +69,70 @@ def extract_price(li):
 for li in cards:
     p_float, p_raw = extract_price(li)
     print(li["data-sku"], p_raw, "→", p_float)
+
+#ocena produktu - rating po klasie(gwiazdki)
+
+def extract_rating(li):
+    el = li.select_one(".star-rating")
+    mapping = {"One":1, "Two":2, "Three":3, "Four":4, "Five":5}
+    for c in (el.get("class", []) if el else []):
+        if c in mapping: return mapping[c]
+    return None
+
+for li in cards:
+    print(li["data-sku"], "rating:", extract_rating(li))
+
+#dostępnośc: liczbowo lub 0: has i contains
+
+def extract_stock(li):
+    txt = select_one_text(li, ".availability")
+    m = re.search(r"\((\d+)\)", txt or "")
+    if m: return int(m.group(1))
+    # fallback: jeśli jest klasa 'out' albo tekst „niedostępne”
+    if li.select_one(".availability.out") or (txt and "niedostępne" in txt.lower()):
+        return 0
+    return None
+
+# przykład :has (znajdź wszystkie produkty z promo ceną)
+promo_products = soup.select("li.product:has(.price.promo)")
+print("Promo:", [li["data-sku"] for li in promo_products])
+
+for li in cards:
+    print(li["data-sku"], "stock:", extract_stock(li))
+
+#warianty produktu
+
+def extract_variants(li):
+    out = []
+    for v in li.select(".variants > li"):
+        out.append({
+            "label": text_or_none(v),
+            "code": v.get("data-variant"),
+            "ean": v.get("data-ean")
+        })
+    return out
+
+print("H100 variants:", extract_variants(cards[0]))
+
+#specyfikacja (tabela th/td -> dict)
+def extract_specs(li):
+    specs = {}
+    for tr in li.select(".specs tr"):
+        k = select_one_text(tr, "th")
+        v = select_one_text(tr, "td")
+        if k: specs[k] = v
+    return specs
+
+print("H100 specs:", extract_specs(cards[0]))
+
+#inline JSON(dane w <script>)
+
+def extract_inline_json(li):
+    data_tag = li.select_one('script[type="application/json"].data') or li.select_one("script.data")
+    if not data_tag: return None
+    try:
+        return json.loads(data_tag.string)
+    except Exception:
+        return None
+
+print("H300 json:", extract_inline_json(cards[2]))

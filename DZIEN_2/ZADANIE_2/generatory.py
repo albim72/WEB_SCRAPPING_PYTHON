@@ -1,3 +1,15 @@
+def pobierz_dane(lista):
+    for element in lista:
+        yield element
+
+
+dane = ["Ala","Ola","Jan","Leon","Nadia"]
+
+for x in pobierz_dane(dane):
+    print(x)
+
+print("_"*70)
+
 import time
 
 def pobierz_w_partiach(dane, rozmiar=3):

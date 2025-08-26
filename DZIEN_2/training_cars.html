@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>AutoMarket — Samochody</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body{font-family:system-ui,Arial;max-width:1000px;margin:2rem auto;padding:0 1rem}
+    header{display:flex;justify-content:space-between;align-items:center}
+    .breadcrumbs a{color:#0a58ca;text-decoration:none;margin-right:.25rem}
+    ul.car-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;list-style:none;padding:0}
+    li.car{border:1px solid #ddd;border-radius:12px;padding:1rem}
+    .thumb{width:100%;height:150px;object-fit:cover;background:#f6f6f6}
+    .name{font-weight:700}
+    .prices .old{text-decoration:line-through;opacity:.6;margin-right:.5rem}
+    .star-rating{display:inline-block}
+    .star-rating.Five::after{content:"★★★★★"}
+    .star-rating.Four::after{content:"★★★★☆"}
+    .star-rating.Three::after{content:"★★★☆☆"}
+    .star-rating.Two::after{content:"★★☆☆☆"}
+    .star-rating.One::after{content:"★☆☆☆☆"}
+    .availability{font-size:.9rem}
+    .availability.out{color:#a00}
+    .trims{margin:.5rem 0;padding-left:1rem}
+    .specs{width:100%;border-collapse:collapse}
+    .specs th,.specs td{border:1px solid #eee;padding:.25rem .5rem;text-align:left}
+    .badge{background:#222;color:#fff;padding:.15rem .4rem;border-radius:999px;font-size:.75rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1 id="page-title">Samochody osobowe</h1>
+    <nav class="breadcrumbs">
+      <a href="/k/motoryzacja">Motoryzacja</a> ›
+      <a href="/k/motoryzacja/samochody">Samochody</a>
+    </nav>
+  </header>
+
+  <ul class="car-list">
+
+    <li class="car" data-sku="C100" data-seg="compact">
+      <img class="thumb" data-src="/img/c100.jpg" alt="CityGo 1.0">
+      <div class="name"><a href="/p/C100">CityGo 1.0</a></div>
+      <div class="star-rating Three"></div>
+      <div class="prices">
+        <span class="price">PLN 62 900</span>
+      </div>
+      <div class="availability">(5)</div>
+      <ul class="trims">
+        <li data-trim="base" data-code="BAS" data-vin="WVWZZZ1KZBW000001">Base</li>
+        <li data-trim="comfort" data-code="COM" data-vin="WVWZZZ1KZBW000002">Comfort</li>
+      </ul>
+      <table class="specs">
+        <tr><th>Silnik</th><td>1.0 MPI</td></tr>
+        <tr><th>Skrzynia</th><td>Manual</td></tr>
+        <tr><th>Spalanie</th><td>5.2 l/100km</td></tr>
+      </table>
+    </li>
+
+    <li class="car featured" data-sku="C200" data-seg="crossover">
+      <img class="thumb" src="/img/placeholder.png" data-src="/img/c200.jpg" alt="CrossX 1.5T">
+      <div class="name"><a href="/p/C200">CrossX 1.5T</a> <span class="badge">HOT</span></div>
+      <div class="star-rating Five"></div>
+      <div class="prices">
+        <span class="price old">PLN 119 900</span>
+        <span class="price promo">PLN 109 900</span>
+      </div>
+      <div class="availability">(2)</div>
+      <ul class="trims">
+        <li data-trim="comfort" data-code="COM" data-vin="WVWZZZ1KZBW000101">Comfort</li>
+        <li data-trim="premium" data-code="PRE" data-vin="WVWZZZ1KZBW000102">Premium</li>
+      </ul>
+    </li>
+
+    <li class="car" data-sku="C300" data-seg="sedan">
+      <div class="name"><a href="/p/C300">Elegance 2.0</a></div>
+      <div class="star-rating Four"></div>
+      <div class="prices">
+        <span class="price">PLN 134,500</span>
+      </div>
+      <div class="availability out">Chwilowo niedostępne</div>
+      <script type="application/json" class="data">
+        { "short": "Komfortowy sedan klasy średniej.", "img": "/img/c300.jpg", "safety": 5 }
+      </script>
+    </li>
+
+    <li class="car" data-sku="C400" data-seg="ev">
+      <img class="thumb" src="/img/c400.jpg" alt="Volt E">
+      <div class="name"><a href="/p/C400">Volt E</a></div>
+      <div class="star-rating Four"></div>
+      <div class="prices">
+        <span class="price">PLN 179.990</span>
+      </div>
+      <div class="availability">(0)</div>
+      <p class="desc">Elektryk z zasięgiem do 420 km WLTP, szybkie ładowanie DC.</p>
+    </li>
+
+  </ul>
+
+  <nav class="pagination">
+    <a class="prev" href="/k/motoryzacja/samochody?page=1">‹ Poprzednia</a>
+    <a class="next" href="/k/motoryzacja/samochody?page=3">Następna ›</a>
+  </nav>
+</body>
+</html>

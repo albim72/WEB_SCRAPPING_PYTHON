@@ -20,6 +20,8 @@ print(f"Tytuł strony: {soup.title.get_text(strip=True)}")
 
 BASE = html_content
 
+#funkcje typu helper - wspomagające cały proces
+
 def text_or_none(node, default=None):
     return node.get_text(" ", strip=True) if node else default
 
@@ -36,3 +38,34 @@ def parse_price_to_float(txt):
     m = re.search(r'([0-9]+(?:[.,][0-9]{2})?)', txt)
     if not m: return None
     return float(m.group(1).replace(",", "."))
+
+#prosty odczyt nagłowka i breadcrumps (okruszki)
+
+page_title = select_one_text(soup, "#page-title")
+crumbs = [a.get_text(strip=True) for a in soup.select(".breadcrumbs a")]
+print(page_title, " | ", " > ".join(crumbs))
+
+#lista wszystkich produktów
+cards = soup.select("ul.product-list > li.product")
+print("Ile produktów:", len(cards))  # 3
+
+#Lazy-images: preferencja data-src przed src
+
+def extract_image(li): #helper
+    img = li.select_one("img.thumb")
+    return attr_or_none(img, "data-src") or attr_or_none(img, "src")
+
+for li in cards:
+    print(li["data-sku"], "img:", extract_image(li))
+
+#cena regularna vs cena promocyjna(priorytet promo)
+
+def extract_price(li):
+    promo = select_one_text(li, ".prices .price.promo") #helper
+    base  = select_one_text(li, ".prices .price:not(.promo):not(.old)")
+    raw = promo or base or select_one_text(li, ".prices .price")
+    return parse_price_to_float(raw), raw
+
+for li in cards:
+    p_float, p_raw = extract_price(li)
+    print(li["data-sku"], p_raw, "→", p_float)

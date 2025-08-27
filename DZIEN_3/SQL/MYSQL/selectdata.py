@@ -54,5 +54,5 @@ wynik = cursorObject.fetchall()
 print(type(wynik))
 
 for x,y in wynik:
-    print(f"imię: {x}, id: {y}")
+    print(f"nazwisko: {y}, id: {x}")
 print("_"*50)

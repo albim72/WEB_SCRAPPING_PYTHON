@@ -1,6 +1,7 @@
 import os, re, requests
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, urlparse
+import os
 
 START = "http://localhost:8000/page1.html"
 OUT = "out2"
@@ -33,3 +34,7 @@ while url and url not in visited:
     url = urljoin(url, nxt["href"]) if nxt else None
 
 print("Pobrano:", downloaded)
+
+for name in ['specyfikacja.docx', 'cennik.xlsx', 'instrukcja.pdf', 'zestawienie.csv']:
+    assert os.path.exists(os.path.join("out2", name))
+print("Wszystko OK!")

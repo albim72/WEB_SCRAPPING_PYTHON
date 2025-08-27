@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Sklep</title>
+<ul class=products>
+  <li data-sku="A1"><a class="name" href="/p/a1">Długopis<b> żelowy</a>  <!-- <b> niezamknięty -->
+  <span class=price>12,50 zł</span>
+  <li data-sku="B2" class="featured"><a class="name" href="p/b2">Zeszyt 60k</a>
+  <span class=price>  4.99 </span>
+  <!-- brak zamknięcia </ul> i </li> specjalnie -->
+<section id="info">
+  <p>Kontakt: <a href="mailto:sklep@example.com">email</a>

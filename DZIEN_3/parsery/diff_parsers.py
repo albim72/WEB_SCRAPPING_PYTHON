@@ -41,3 +41,13 @@ for parser in ("html.parser", "lxml", "html5lib"):
     print(f"\n--- {result['parser']} ({result['time_ms']} ms) ---")
     for it in result["items"]:
         print(it)
+
+# Sanity checks pod wspólny test
+parsers = {p["parser"]: p for p in [parse_and_extract("html.parser"),
+                                    parse_and_extract("lxml"),
+                                    parse_and_extract("html5lib")]}
+
+assert len(parsers["lxml"]["items"]) >= 2
+assert any(i["featured"] for i in parsers["lxml"]["items"])
+assert all(i["url"].startswith("https://example.com/") for i in parsers["lxml"]["items"])
+

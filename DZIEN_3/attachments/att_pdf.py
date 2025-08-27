@@ -6,7 +6,7 @@ BASE = "http://localhost:8000/task1.html"
 OUT = "out1"
 os.makedirs(OUT, exist_ok=True)
 
-ATTACH_EXTS = {".pdf", ".csv"}
+ATTACH_EXTS = {".pdf", ".csv",".txt",".dat"}
 
 def safe_filename(name: str) -> str:
     return re.sub(r"[^\w\.-]+", "_", name)[:180] or "file"

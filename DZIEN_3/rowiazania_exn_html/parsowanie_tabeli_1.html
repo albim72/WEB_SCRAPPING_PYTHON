@@ -1,0 +1,11 @@
+from bs4 import BeautifulSoup
+
+html = open("ex1.html").read()
+soup = BeautifulSoup(html, "html.parser")
+
+rows = []
+for tr in soup.select("#stats tr")[2:]:
+    rok,pl,de = [td.get_text(strip=True) for td in tr.find_all("td")]
+    rows.append({"rok": int(rok), "pl": int(pl), "de": int(de)})
+
+print(rows)

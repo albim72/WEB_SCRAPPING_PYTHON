@@ -1,5 +1,5 @@
 import configparser
-import mysql.connector
+import pymysql
 
 #ładowanie pliki konfiguracyjnego
 config = configparser.ConfigParser()
@@ -10,15 +10,17 @@ config.read("config.ini")
 db_user = config['mysql']['user']
 db_password = config['mysql']['password']
 db_host = config['mysql']['host']
-db_port = config['mysql']['port']
+db_port = int(config['mysql']['port'])
 db_database = config['mysql']['database']
 
-connection = mysql.connector.connect(
-    user = db_user,
-    password = db_password,
-    host = db_host,
-    port = db_port,
-    database = db_database
+
+
+connection = pymysql.connect(
+    user=db_user,
+    password=db_password,
+    host=db_host,
+    port=db_port,
+    database=db_database
 )
 
 cursorObject = connection.cursor()

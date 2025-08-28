@@ -39,3 +39,18 @@ Dane (ID → tekst):
 
 Zwróć wyłącznie listę JSON.
 
+PYTHON
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://quotes.toscrape.com"
+soup = BeautifulSoup(requests.get(url, timeout=10).text, "html.parser")
+
+texts = [q.select_one(".text").get_text(strip=True).strip("“”") 
+         for q in soup.select(".quote")][:5]
+
+for i, t in enumerate(texts, 1):
+    print(f'{i}: "{t}"')
+
+

@@ -1,0 +1,16 @@
+Jesteś ekspertem od web scrapingu w Pythonie. 
+Twoje zadanie to wyciągnąć dane z HTML i zaprezentować je tak, jakbyś pisał scraper.
+
+Instrukcje:
+1. Z poniższego HTML wyciągnij listę książek.
+2. Każdy rekord ma zawierać:
+   - "title"
+   - "price"
+3. Zwróć wynik w formie czystego JSON (lista obiektów).
+4. Nie dodawaj żadnych komentarzy ani dodatkowych opisów, tylko czysty JSON.
+5. Jeśli HTML jest niepełny, pokaż tyle rekordów, ile się da.
+
+HTML:
+<<<
+{html_fragment}
+>>>

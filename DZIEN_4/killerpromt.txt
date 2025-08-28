@@ -1,4 +1,4 @@
-Jesteś ekspertem od web scrapingu w Pythonie. 
+1. Jesteś ekspertem od web scrapingu w Pythonie. 
 Twoje zadanie to wyciągnąć dane z HTML i zaprezentować je tak, jakbyś pisał scraper.
 
 Instrukcje:
@@ -14,3 +14,28 @@ HTML:
 <<<
 {html_fragment}
 >>>
+
+2. Jesteś analitykiem nastrojów. Oceń sentyment krótkich tekstów (cytatów z WWW).
+
+Instrukcje:
+- Dla każdego rekordu zwróć JSON o kluczach: 
+  {"id": <int>, "sentiment": "positive|neutral|negative", "confidence": 0-1, "rationale": "<krótko dlaczego>"}
+- Krótkie, konkretne uzasadnienie (1 zdanie).
+- Zero komentarzy poza JSON-em listy (jedna lista JSON).
+- Zakaz zmiany treści wejściowych.
+- Nie zgaduj, jeśli niepewne → "neutral" i niska confidence (~0.55-0.65).
+
+Definicje:
+- positive: dominują pozytywne emocje/nadzieja/akceptacja.
+- negative: dominują lęk/gniew/smutek/pesymizm.
+- neutral: opisowe/dwuznaczne/bez wyraźnej emocji.
+
+Dane (ID → tekst):
+1: "The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking."
+2: "It is our choices, Harry, that show what we truly are, far more than our abilities."
+3: "There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle."
+4: "The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid."
+5: "Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring."
+
+Zwróć wyłącznie listę JSON.
+
